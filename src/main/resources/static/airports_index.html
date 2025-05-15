@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+PUT airports
+{
+"settings": {
+"analysis": {
+"analyzer": {
+"autocomplete": {
+"type": "custom",
+"tokenizer": "whitespace",
+"filter": [
+"lowercase",
+"autocomplete_filter"
+]
+}
+},
+"filter": {
+"autocomplete_filter": {
+"type": "edge_ngram",
+"minGram": 2,
+"maxGram": 20
+}
+}
+}
+},
+"mappings":
+{
+"properties":
+{
+"code": { "type": "keyword" },
+"icao": { "type": "keyword" },
+"name": { "type": "text" },
+"latitude": {
+"type": "text",
+"fields": {
+"raw": {
+"type": "keyword"
+}
+}
+},
+"longitude": {
+"type": "text",
+"fields": {
+"raw": {
+"type": "keyword"
+}
+}
+},
+"elevation": { "type": "integer" },
+"url": { "type": "text" },
+"time_zone": { "type": "text" },
+"city_code": { "type": "keyword" },
+"country_code": { "type": "keyword" },
+"city": {
+"type": "text",
+"analyzer": "autocomplete",
+"fields": {
+"raw": {
+"type": "keyword"
+}
+}
+},
+"state": {
+"type": "text",
+"analyzer": "autocomplete",
+"fields": {
+"raw": {
+"type": "keyword"
+}
+}
+},
+"county": {
+"type": "text",
+"analyzer": "autocomplete",
+"fields": {
+"raw": {
+"type": "keyword"
+}
+}
+},
+"type": { "type": "keyword" }
+}
+
+}
+}
+</body>
+</html>
