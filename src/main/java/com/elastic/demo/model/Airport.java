@@ -1,9 +1,13 @@
-package com.elastic.demo.models;
+package com.elastic.demo.model;
 
 import com.opencsv.bean.CsvBindByName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Airport {
     @CsvBindByName(column = "code")
     private String code;
